@@ -11,6 +11,10 @@ For the purpose of this problem, we will return 0 when needle is an empty string
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        if not haystack and needle:
-            return -1
-        return haystack.find(needle) if haystack else 0
+        if not needle:
+            return 0
+        l = len(needle)
+        for i in range(len(haystack)):
+            if haystack[i:i + l] == needle:
+                return i
+        return -1
