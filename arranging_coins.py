@@ -1,13 +1,18 @@
 class Solution:
     def arrangeCoins(self, n: int) -> int:
-        # O(n) solution
-        cur_coins = 1
+        # O(logn) solution
+
+        l, r = 0, n
+
         res = 0
-        while n > 0:
-            n -= cur_coins
-            cur_coins += 1
-            if n >= 0:
-                res += 1
+        while l <= r:
+            mid = (l + r) // 2
+            coins = (mid / 2) * (mid + 1)
+            if coins > n:
+                r = mid - 1
+            else:
+                l = mid + 1
+                res = max(mid, res)
         return res
 
 
