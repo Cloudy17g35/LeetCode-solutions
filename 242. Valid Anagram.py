@@ -10,5 +10,5 @@ class Solution:
         
         c1 = collections.Counter(t)
         c2 = collections.Counter(s)
-        return True if not (c2 - c1) else False
+        return c1 == c2
         
