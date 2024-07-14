@@ -1,0 +1,15 @@
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+        if not trust and n == 1:
+            return 1
+        
+        trusters = set()
+        s = defaultdict(set)
+        for t in trust:
+            t1, t2 = t[0], t[1]
+            s[t2].add(t1)
+            trusters.add(t1)
+        for k,v in s.items():
+            if k not in trusters and len(v) == n - 1:
+                return k
+        return -1
